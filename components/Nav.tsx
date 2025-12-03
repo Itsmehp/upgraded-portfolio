@@ -192,9 +192,9 @@ export default function Nav() {
         className="fixed top-0 right-0 h-full w-64 bg-white/10 backdrop-blur-md border-l border-white/20 z-40 md:hidden"
         style={{ display: 'none' }}
       >
-        <div className="p-4">
-          <div className="text-xl font-bold mb-8">Portfolio</div>
-          <ul ref={menuItemsRef} className="space-y-4">
+        <div className="p-4 flex flex-col h-full">
+          <div className="text-xl font-bold mb-8">Menu</div>
+          <ul ref={menuItemsRef} className="space-y-4 flex-1">
             {navItems.map((item) => (
               <li key={item.name}>
                 <a
@@ -207,6 +207,17 @@ export default function Nav() {
               </li>
             ))}
           </ul>
+          <div className="flex space-x-3 mt-8">
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 transition-colors duration-300">
+              <Linkedin size={20} />
+            </a>
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors duration-300">
+              <Github size={20} />
+            </a>
+            <a href="mailto:your.email@example.com" className="text-white hover:text-red-300 transition-colors duration-300">
+              <Mail size={20} />
+            </a>
+          </div>
         </div>
       </div>
     </>
