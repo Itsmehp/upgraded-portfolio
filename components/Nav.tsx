@@ -158,7 +158,7 @@ export default function Nav() {
           <div
             ref={indicatorRef}
             className="absolute top-1/2 transform -translate-y-1/2 bg-white/20 rounded-full shadow-md"
-            style={{ height: 'calc(100% - 8px)', left: 16, width: 0 }}
+            style={{ height: 'calc(100% - 8px)', width: 0 }}
           />
         </div>
 
