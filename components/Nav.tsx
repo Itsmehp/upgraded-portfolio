@@ -178,6 +178,11 @@ export default function Nav() {
         </div>
       </nav>
 
+      {/* Mobile Name */}
+      <div className="fixed top-4 left-4 z-30 md:hidden px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-lg">
+        <span className="text-white font-bold text-sm">Harshil Patel</span>
+      </div>
+
       {/* Mobile Nav Button */}
       <button
         onClick={toggleMenu}
