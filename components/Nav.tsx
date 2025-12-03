@@ -193,7 +193,7 @@ export default function Nav() {
         style={{ display: 'none' }}
       >
         <div className="p-4 flex flex-col h-full">
-          <div className="text-xl font-bold mb-8">Menu</div>
+          <div className="text-xl font-bold mb-8 text-white">Menu</div>
           <ul ref={menuItemsRef} className="space-y-4 flex-1">
             {navItems.map((item) => (
               <li key={item.name}>
@@ -207,7 +207,7 @@ export default function Nav() {
               </li>
             ))}
           </ul>
-          <div className="flex space-x-3 mt-8">
+          <div className="flex space-x-3 mt-4">
             <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 transition-colors duration-300">
               <Linkedin size={20} />
             </a>
