@@ -179,7 +179,7 @@ export default function Nav() {
       </nav>
 
       {/* Mobile Name */}
-      <div className="fixed top-4 left-4 z-30 md:hidden px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-lg">
+      <div className="fixed top-4 left-4 z-30 md:hidden px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-md shadow-lg">
         <span className="text-white font-bold text-sm">Harshil Patel</span>
       </div>
 
