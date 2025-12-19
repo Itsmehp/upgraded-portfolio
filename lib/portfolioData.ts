@@ -75,22 +75,37 @@ export const initialPortfolioData: PortfolioData = {
     completed: "8 + Projects",
     support: "Online 24/7",
     skills: [
+      { name: "React", level: "Advanced", category: "frontend" },
+      { name: "Next.js", level: "Advanced", category: "frontend" },
+      { name: "TypeScript", level: "Advanced", category: "frontend" },
+      { name: "JavaScript", level: "Advanced", category: "frontend" },
+      { name: "Tailwind CSS", level: "Advanced", category: "frontend" },
       { name: "HTML", level: "Advanced", category: "frontend" },
       { name: "CSS", level: "Advanced", category: "frontend" },
-      { name: "JavaScript", level: "Intermediate", category: "frontend" },
-      { name: "React", level: "Intermediate", category: "frontend" },
-      { name: "Bootstrap", level: "Basic", category: "frontend" },
-      { name: "Git", level: "Intermediate", category: "frontend" },
-      { name: "PHP", level: "Intermediate", category: "backend" },
-      { name: "Node.js", level: "Basic", category: "backend" },
+      { name: "Git", level: "Advanced", category: "frontend" },
+      { name: "Node.js", level: "Advanced", category: "backend" },
+      { name: "PostgreSQL", level: "Advanced", category: "backend" },
+      { name: "Prisma", level: "Advanced", category: "backend" },
+      { name: "Express", level: "Intermediate", category: "backend" },
+      { name: "Supabase", level: "Intermediate", category: "backend" },
       { name: "Python", level: "Intermediate", category: "backend" },
-      { name: "MySQL", level: "Basic", category: "backend" },
-      { name: "Firebase", level: "Basic", category: "backend" },
-      { name: "Oracle", level: "Basic", category: "backend" }
+      { name: "Docker", level: "Intermediate", category: "backend" },
+      { name: "n8n", level: "Intermediate", category: "backend" }
     ],
-    technologies: ["HTML", "CSS", "JavaScript", "React", "Bootstrap", "Git", "PHP", "Node.js", "Python", "MySQL", "Firebase", "Oracle"]
+    technologies: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "HTML", "CSS", "Git", "Node.js", "PostgreSQL", "Prisma", "Express", "Supabase", "Python", "Docker", "n8n"]
   },
   experience: [
+    {
+      title: "Master Thesis Student",
+      company: "EMC2 - Hof, Germany",
+      period: "2025 - Present",
+      description: "Developed a full-stack AI and rule-based quote generation system for shower enclosures and bathroom solutions. Built scalable backend APIs and a responsive frontend with spatial recognition capabilities.",
+      achievements: [
+        "Designed and implemented scalable PostgreSQL database with automated product and pricing update scripts",
+        "Built responsive frontend integrated with MagicPlan APIs for bathroom layout visualization",
+        "Created complex state management for multiple shower enclosure configurations (alcove, corner, U-cabin styles)"
+      ]
+    },
     {
       title: "Freelancing Web Developer",
       company: "Online",
@@ -137,6 +152,13 @@ export const initialPortfolioData: PortfolioData = {
     }
   ],
   projects: [
+    {
+      name: "Shower Enclosure Quote System",
+      description: "AI and rule-based quote generation platform for shower enclosures featuring spatial recognition, MagicPlan API integration for bathroom layouts, and complex configuration management for alcove, corner, and U-cabin shower styles with millimeter precision measurements.",
+      technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Node.js", "Tailwind CSS"],
+      links: {},
+      category: "Enterprise"
+    },
     {
       name: "Investment Calculator",
       description: "A React-based investment calculator for financial planning and analysis.",

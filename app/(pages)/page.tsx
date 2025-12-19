@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { initialPortfolioData } from "@/lib/portfolioData";
+import { TechStackCarousel } from "@/components/ui/TechStackCarousel";
 
 export default function HomePage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -179,6 +180,19 @@ export default function HomePage() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Tech Stack Carousel */}
+      <section className="py-16 border-b border-[var(--color-border)]">
+        <div className="container-custom">
+          <p className="text-sm font-mono text-[var(--color-muted-foreground)] mb-2 text-center">
+            Tech Stack
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+            Technologies I Work With
+          </h2>
+          <TechStackCarousel />
         </div>
       </section>
 
