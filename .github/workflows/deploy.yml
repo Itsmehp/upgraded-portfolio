@@ -8,7 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: production
     
     steps:
       - name: Checkout code
@@ -71,7 +70,7 @@ jobs:
             github.rest.repos.createDeploymentStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              deployment_id: '${{ steps.deployment.outputs.deployment_id }}',
+              deployment_id: ${{ steps.deployment.outputs.deployment_id }},
               state: 'in_progress',
               environment_url: 'https://harshil07.in'
             });
@@ -102,7 +101,7 @@ jobs:
             github.rest.repos.createDeploymentStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              deployment_id: '${{ steps.deployment.outputs.deployment_id }}',
+              deployment_id: ${{ steps.deployment.outputs.deployment_id }},
               state: 'success',
               environment_url: 'https://harshil07.in',
               description: 'Deployment completed successfully'
@@ -116,7 +115,7 @@ jobs:
             github.rest.repos.createDeploymentStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              deployment_id: '${{ steps.deployment.outputs.deployment_id }}',
+              deployment_id: ${{ steps.deployment.outputs.deployment_id }},
               state: 'failure',
               description: 'Deployment failed'
             });
