@@ -1,0 +1,205 @@
+==========================================
+🚀 DEPLOYMENT STARTED
+==========================================
+Time: Sat Dec 20 21:10:19 UTC 2025
+Commit ID: unknown
+Commit Message: Manual deploy
+
+Step 1: Pulling latest changes from GitHub...
+From github-personal:Itsmehp/upgraded-portfolio
+ * branch            master     -> FETCH_HEAD
+HEAD is now at c379c0b Simplify: Use SSH deployment instead of webhooks - no exposed ports needed
+✓ Code pulled successfully
+
+Step 2: Building Docker image...
+ Image portfolio-portfolio Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 520B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.17kB done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:20-alpine
+#3 DONE 0.8s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [runner 2/7] WORKDIR /app
+#5 CACHED
+
+#6 [deps 1/5] FROM docker.io/library/node:20-alpine@sha256:658d0f63e501824d6c23e06d4bb95c71e7d704537c9d9272f488ac03a370d448
+#6 resolve docker.io/library/node:20-alpine@sha256:658d0f63e501824d6c23e06d4bb95c71e7d704537c9d9272f488ac03a370d448 0.0s done
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 55.30kB 0.0s done
+#7 DONE 0.0s
+
+#8 [runner 3/7] RUN addgroup --system --gid 1001 nodejs
+#8 DONE 0.2s
+
+#9 [deps 2/5] RUN corepack enable && corepack prepare pnpm@latest --activate
+#9 ...
+
+#10 [runner 4/7] RUN adduser --system --uid 1001 nextjs
+#10 DONE 0.2s
+
+#9 [deps 2/5] RUN corepack enable && corepack prepare pnpm@latest --activate
+#9 0.610 Preparing pnpm@latest for immediate activation...
+#9 DONE 1.6s
+
+#11 [deps 3/5] WORKDIR /app
+#11 DONE 0.1s
+
+#12 [deps 4/5] COPY package.json pnpm-lock.yaml ./
+#12 DONE 0.1s
+
+#13 [deps 5/5] RUN pnpm install --frozen-lockfile
+#13 0.880 Lockfile is up to date, resolution step is skipped
+#13 0.978 Progress: resolved 1, reused 0, downloaded 0, added 0
+#13 1.085 Packages: +622
+#13 1.085 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#13 1.980 Progress: resolved 622, reused 0, downloaded 19, added 4
+#13 2.993 Progress: resolved 622, reused 0, downloaded 61, added 19
+#13 3.994 Progress: resolved 622, reused 0, downloaded 74, added 24
+#13 4.995 Progress: resolved 622, reused 0, downloaded 298, added 176
+#13 5.996 Progress: resolved 622, reused 0, downloaded 497, added 348
+#13 6.759 Progress: resolved 622, reused 0, downloaded 622, added 622, done
+#13 7.213 
+#13 7.213 dependencies:
+#13 7.213 + @gsap/react 2.1.2
+#13 7.213 + @radix-ui/react-slot 1.2.4
+#13 7.213 + class-variance-authority 0.7.1
+#13 7.213 + clsx 2.1.1
+#13 7.213 + gsap 3.13.0
+#13 7.213 + lucide-react 0.555.0
+#13 7.213 + next 16.0.6
+#13 7.213 + next-themes 0.4.6
+#13 7.213 + ogl 1.0.11
+#13 7.213 + react 19.2.0
+#13 7.213 + react-dom 19.2.0
+#13 7.213 + tailwind-merge 3.4.0
+#13 7.213 
+#13 7.213 devDependencies:
+#13 7.213 + @21st-extension/toolbar 0.5.14
+#13 7.213 + @tailwindcss/postcss 4.1.17
+#13 7.213 + @types/node 20.19.25
+#13 7.213 + @types/react 19.2.7
+#13 7.213 + @types/react-dom 19.2.3
+#13 7.213 + eslint 9.39.1
+#13 7.213 + eslint-config-next 16.0.6
+#13 7.213 + shadcn 3.5.1
+#13 7.213 + tailwindcss 4.1.17
+#13 7.213 + tw-animate-css 1.4.0
+#13 7.213 + typescript 5.9.3
+#13 7.213 
+#13 7.229 ╭ Warning ─────────────────────────────────────────────────────────────────────╮
+#13 7.229 │                                                                              │
+#13 7.229 │   Ignored build scripts: msw@2.12.3, sharp@0.34.5, unrs-resolver@1.11.1.     │
+#13 7.229 │   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+#13 7.229 │   to run scripts.                                                            │
+#13 7.229 │                                                                              │
+#13 7.229 ╰──────────────────────────────────────────────────────────────────────────────╯
+#13 7.286 Done in 7s using pnpm v10.26.1
+#13 DONE 21.2s
+
+#14 [builder 4/6] COPY --from=deps /app/node_modules ./node_modules
+#14 DONE 16.8s
+
+#15 [builder 5/6] COPY . .
+#15 DONE 0.3s
+
+#16 [builder 6/6] RUN pnpm build
+#16 0.687 
+#16 0.687 > portfolio@0.1.0 build /app
+#16 0.687 > next build
+#16 0.687 
+#16 1.782    ▲ Next.js 16.0.6 (Turbopack)
+#16 1.782 
+#16 1.818    Creating an optimized production build ...
+#16 21.62  ✓ Compiled successfully in 19.1s
+#16 21.63    Running TypeScript ...
+#16 26.44    Collecting page data using 3 workers ...
+#16 26.97    Generating static pages using 3 workers (0/16) ...
+#16 27.85    Generating static pages using 3 workers (4/16) 
+#16 27.85    Generating static pages using 3 workers (8/16) 
+#16 28.10    Generating static pages using 3 workers (12/16) 
+#16 28.10  ✓ Generating static pages using 3 workers (16/16) in 1129.5ms
+#16 28.12    Finalizing page optimization ...
+#16 28.59 
+#16 28.59 Route (app)
+#16 28.59 ┌ ○ /
+#16 28.59 ├ ○ /_not-found
+#16 28.59 ├ ○ /about
+#16 28.59 ├ ○ /contact
+#16 28.59 ├ ○ /projects
+#16 28.59 └ ● /projects/[slug]
+#16 28.59   ├ /projects/shower-enclosure-quote-system
+#16 28.59   ├ /projects/investment-calculator
+#16 28.59   ├ /projects/expense-calculator
+#16 28.59   └ [+6 more paths]
+#16 28.59 
+#16 28.59 
+#16 28.59 ○  (Static)  prerendered as static content
+#16 28.59 ●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+#16 28.59 
+#16 DONE 28.7s
+
+#17 [runner 5/7] COPY --from=builder /app/public ./public
+#17 DONE 0.0s
+
+#18 [runner 6/7] COPY --from=builder /app/.next/standalone ./
+#18 DONE 0.7s
+
+#19 [runner 7/7] COPY --from=builder /app/.next/static ./.next/static
+#19 DONE 0.1s
+
+#20 exporting to image
+#20 exporting layers
+#20 exporting layers 2.8s done
+#20 exporting manifest sha256:ad79e2b8c930934bdec2ccac3364a7f4e558a6ca620eb6a846b5b925db2c629a 0.0s done
+#20 exporting config sha256:18ab1a8dc994ceff8aaee874e8f1678082ba0dab66ae2e864c1815b8328163cb 0.0s done
+#20 exporting attestation manifest sha256:6c881e71637a363568f942726a7422d783ec30f9fc8523334b1226fc0a71eddb 0.0s done
+#20 exporting manifest list sha256:3cdb47ecb3a3f675c5d3472c5beff1c8514d39bb96423ceed91a3530cb651469 0.0s done
+#20 naming to docker.io/library/portfolio-portfolio:latest done
+#20 unpacking to docker.io/library/portfolio-portfolio:latest
+#20 unpacking to docker.io/library/portfolio-portfolio:latest 0.5s done
+#20 DONE 3.5s
+
+#21 resolving provenance for metadata file
+#21 DONE 0.0s
+ Image portfolio-portfolio Built 
+✓ Docker image built successfully
+
+Step 3: Stopping old container...
+✓ Old container stopped
+
+Step 4: Starting new container...
+ Container portfolio Creating 
+ Container portfolio Created 
+ Container portfolio Starting 
+ Container portfolio Started 
+✓ New container started
+
+Step 5: Waiting for portfolio to be ready...
+✓ Portfolio is responding (1 attempts)
+
+Step 6: Verifying HTTPS access...
+✓ HTTPS is accessible
+
+Step 7: Cleaning up old Docker images...
+✓ Cleanup completed
+
+Step 8: Final health check...
+✓ Container is running and healthy
+
+==========================================
+✅ DEPLOYMENT COMPLETED SUCCESSFULLY
+==========================================
+Time: Sat Dec 20 21:11:44 UTC 2025
+Commit: unknown
+
