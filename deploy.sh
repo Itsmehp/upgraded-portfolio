@@ -5,12 +5,12 @@ set -e
 
 REPO_DIR="/opt/portfolio"
 COMPOSE_FILE="docker-compose.yml"
-LOG_FILE="/var/log/portfolio-deploy.log"
+LOG_FILE="$REPO_DIR/deploy.log"
 COMMIT_ID=${1:-"unknown"}
 COMMIT_MSG=${2:-"Manual deploy"}
 
 # Create log directory
-mkdir -p /var/log
+mkdir -p "$REPO_DIR"
 exec 1> >(tee -a "$LOG_FILE")
 exec 2>&1
 
@@ -27,8 +27,8 @@ cd "$REPO_DIR" || exit 1
 
 # Step 1: Pull latest changes from GitHub
 echo "Step 1: Pulling latest changes from GitHub..."
-git fetch origin main
-git reset --hard origin/main
+git fetch origin master
+git reset --hard origin/master
 echo "✓ Code pulled successfully"
 echo ""
 
