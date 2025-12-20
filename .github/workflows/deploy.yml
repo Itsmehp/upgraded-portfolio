@@ -1,0 +1,122 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Create deployment
+        uses: actions/github-script@v7
+        id: deployment
+        with:
+          script: |
+            const deployment = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.ref,
+              environment: 'production',
+              required_contexts: [],
+              auto_merge: false,
+              production_environment: true
+            });
+            console.log('Deployment created:', deployment.data.id);
+            core.setOutput('deployment_id', deployment.data.id);
+      
+      - name: Trigger webhook deployment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const webhookUrl = '${{ secrets.WEBHOOK_URL }}';
+            const webhookSecret = '${{ secrets.WEBHOOK_SECRET }}';
+            const crypto = require('crypto');
+            
+            const payload = JSON.stringify({
+              ref: '${{ github.ref }}',
+              head_commit: {
+                id: '${{ github.sha }}',
+                message: '${{ github.event.head_commit.message || 'Deployment triggered from GitHub Actions' }}'
+              }
+            });
+            
+            const signature = 'sha256=' + crypto.createHmac('sha256', webhookSecret).update(payload).digest('hex');
+            
+            const response = await fetch(webhookUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-Hub-Signature-256': signature
+              },
+              body: payload
+            });
+            
+            if (!response.ok) {
+              throw new Error(`Webhook failed: ${response.status} ${response.statusText}`);
+            }
+            
+            console.log('Deployment webhook triggered successfully');
+      
+      - name: Update deployment status - In Progress
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: '${{ steps.deployment.outputs.deployment_id }}',
+              state: 'in_progress',
+              environment_url: 'https://harshil07.in'
+            });
+      
+      - name: Wait for deployment to complete
+        run: |
+          echo "⏳ Waiting for deployment to complete on server..."
+          sleep 10
+          
+          # Check if deployment succeeded by testing the endpoint
+          for i in {1..30}; do
+            if curl -s -I https://harshil07.in | grep -q "200\|HTTP"; then
+              echo "✅ Deployment successful!"
+              exit 0
+            fi
+            echo "Attempt $i/30: Waiting for server..."
+            sleep 2
+          done
+          
+          echo "❌ Deployment verification failed"
+          exit 1
+      
+      - name: Update deployment status - Success
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: '${{ steps.deployment.outputs.deployment_id }}',
+              state: 'success',
+              environment_url: 'https://harshil07.in',
+              description: 'Deployment completed successfully'
+            });
+      
+      - name: Update deployment status - Failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: '${{ steps.deployment.outputs.deployment_id }}',
+              state: 'failure',
+              description: 'Deployment failed'
+            });
