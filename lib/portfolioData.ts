@@ -70,7 +70,7 @@ export const initialPortfolioData: PortfolioData = {
     ]
   },
   about: {
-    description: "Front-end developer, I create web pages with UI / UX features and interface, I have currently worked on a few ready to deploy apps in React which includes A CRUD application. I've also created websites for local businesses which helped them increase their reach.",
+    description: "Full-stack developer specializing in React and Next.js. I build scalable web applications with modern tech stacks including TypeScript, Node.js, PostgreSQL, and Prisma. From CRUD applications to enterprise-grade AI quote systems, I create high-performance, responsive interfaces combined with robust backend architectures. I've delivered production-ready applications for businesses and currently working on AI-powered solutions as a Master's thesis student.",
     experience: "2 Years",
     completed: "8 + Projects",
     support: "Online 24/7",
